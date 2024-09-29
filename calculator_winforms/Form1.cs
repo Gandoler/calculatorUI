@@ -24,31 +24,18 @@ namespace calculator_winforms
             InitializeComponent();
         }
 
-        private void guna2CircleButton8_Click(object sender, EventArgs e)
-        {
-            if ((displaychik.Text.Length <= MAXSIZE))
-            {
-                displaychik.Text = displaychik.Text + Button_8.Text;
-            }
-        }
+        
 
         private void calculator_Load(object sender, EventArgs e)
         {
 
 
         }
-        private void check_nul_first_displaychik()
-        {
-            if ((displaychik.Text.Length == 1) && (displaychik.Text == "0"))
-            {
-                displaychik.Text = "";
-
-            }
-        }
+        
 
         private void Button_0_Click(object sender, EventArgs e)
         {
-            if (!(displaychik.Text.Length == 0) && (displaychik.Text.Length <= MAXSIZE))
+            if ((displaychik.Text.Length > 0) && (displaychik.Text.Length <= MAXSIZE) && (displaychik.Text != "-"))
             {
                 displaychik.Text = displaychik.Text + Button_0.Text;
             }
@@ -120,15 +107,41 @@ namespace calculator_winforms
 
         private void Button_minus_Click(object sender, EventArgs e)
         {
-            a = float.Parse(displaychik.Text);
-            displaychik.Text = "";
-            res = a;
-            operation = 2;
+           if( displaychik.Text.Length == 0)
+            {
+                displaychik.Text = "-";
+            }
+            else {
+                if (displaychik.Text == "-")
+                {
+                    displaychik.Text = "";
+
+                }
+                else
+                {
+                    a = float.Parse(displaychik.Text);
+                    displaychik.Text = "";
+                    res = a;
+                    operation = 2;
+                }
+                
+            }
+            
         }
 
         private void Button_multiple_Click(object sender, EventArgs e)
         {
-
+            if (displaychik.Text == "")
+            {
+                a = 0;
+            }
+            else
+            {
+                a = float.Parse(displaychik.Text);
+            }
+            displaychik.Text = "";
+            res = a;
+            operation = 3;
         }
 
         private void Button_1_Click(object sender, EventArgs e)
@@ -141,10 +154,17 @@ namespace calculator_winforms
 
         private void Button_devide_Click(object sender, EventArgs e)
         {
-            a = float.Parse(displaychik.Text);
+            if (displaychik.Text == "")
+            {
+                a = 0;
+            }
+            else
+            {
+                a = float.Parse(displaychik.Text);
+            }
             displaychik.Text = "";
             res = a;
-            operation = 3;
+            operation = 4;
         }
 
         private void Button_clear_Click(object sender, EventArgs e)
@@ -153,17 +173,36 @@ namespace calculator_winforms
             operation = 0;
         }
 
+        private void Button_8_Click(object sender, EventArgs e)
+        {
+            if ((displaychik.Text.Length <= MAXSIZE))
+            {
+                displaychik.Text = displaychik.Text + Button_8.Text;
+            }
+        }
+
         private void check_type_float_or_void_and_print()
         {
             if (res % 1 == 0) 
             {
-                displaychik.Text = ((int)res).ToString(); 
+                try
+                {
+                    displaychik.Text = (checked((int)res)).ToString();
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Ошибка переполнения\n\t\tПодробности:\n" + ex);
+                    a = 0;
+                    b = 0;
+                    operation = 0;
+                }
             }
             else
             {
                 displaychik.Text = res.ToString(); 
             }
         }
+
+
 
         private void Button_equal_Click(object sender, EventArgs e)
         {
@@ -172,20 +211,65 @@ namespace calculator_winforms
                 case 0:
                     break;
                 case 1:
-                    b = float.Parse(displaychik.Text);
+                    if (displaychik.Text == "")
+                    {
+                        b = 0;
+                    }
+                    else
+                    {
+                        b = float.Parse(displaychik.Text);
+                    }
                     res = a + b;
                     check_type_float_or_void_and_print();
                     operation = 0;
                     break;
                 case 2:
-                    b = float.Parse(displaychik.Text);
+                    if (displaychik.Text == "")
+                    {
+                        b = 0;
+                    }
+                    else
+                    {
+                        b = float.Parse(displaychik.Text);
+                    }
+
                     res = a - b;
                     check_type_float_or_void_and_print();
                     operation = 0;
                     break;
                 case 3:
-                    b = float.Parse(displaychik.Text);
-                    res = a / b;
+                    if (displaychik.Text == "")
+                    {
+                        b = 0;
+                    }
+                    else
+                    {
+                        b = float.Parse(displaychik.Text);
+                    }
+                    res = a * b;
+                    check_type_float_or_void_and_print();
+                    operation = 0;
+                    break;
+                case 4:
+                    if (displaychik.Text == "")
+                    {
+                        b = 0;
+                    }
+                    else
+                    {
+                        b = float.Parse(displaychik.Text);
+                    }
+                    try
+                    {
+                        res = a / b;
+                    }
+                    catch (Exception ex) 
+                        {
+                        MessageBox.Show("Ошибка деления\n\t\tПодробности:\n" + ex);
+                        a = 0;
+                        b = 0;
+                        operation = 0;
+                        }
                     check_type_float_or_void_and_print();
                     operation = 0;
                     break;

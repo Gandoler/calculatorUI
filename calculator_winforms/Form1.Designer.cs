@@ -202,7 +202,7 @@
             this.Button_8.Size = new System.Drawing.Size(79, 79);
             this.Button_8.TabIndex = 8;
             this.Button_8.Text = "8";
-            this.Button_8.Click += new System.EventHandler(this.guna2CircleButton8_Click);
+            this.Button_8.Click += new System.EventHandler(this.Button_8_Click);
             // 
             // Button_7
             // 
