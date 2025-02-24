@@ -1,12 +1,14 @@
-﻿using OTSC_ui.Tools.AppSettingJsonPhars.Reader;
-using OTSC_ui.Tools.AppSettingJsonPhars.Temaplates;
+﻿using OTSCSERVER;
+using OTSCSERVER.Tools.AppSettingsParse.Reader;
+using OTSCSERVER.Tools.AppSettingsParse.Templaetes;
 using Serilog;
+using System;
 
-namespace OTSC_ui.Tools.AppSettingJsonPhars.ConnectionStringManager
+namespace OTSCSERVER.Tools.AppSettingsParse.ConectionStringManager
 {
     internal static class ConnectionStringManager
     {
-        static RootConfig rootConfig = new();
+        static RootConfig rootConfig = new RootConfig(new ServerSettings());
 
         static ConnectionStringManager()
         {
@@ -14,32 +16,35 @@ namespace OTSC_ui.Tools.AppSettingJsonPhars.ConnectionStringManager
         }
         private static void GoDeserialiseObject()
         {
-          
-            JsonReaderForConfig jsonReader = new();
+
+            JsonReaderForConfig jsonReader = new JsonReaderForConfig();
             try
             {
-                rootConfig = jsonReader.Read<RootConfig>(Properties.Settings1.Default.AppsettingsPath);
+                rootConfig = jsonReader.Read<RootConfig>(ProgramSettings.Default.AppsettingsPath);
                 Log.Information($"ConnectionStringManager: settings:{rootConfig}");
             }
             catch (Exception ex)
             {
                 Log.Error($"In ConnectionStringManager {ex.Message}");
             }
-            
+
         }
 
-        public static string? GetConnectionString()
-        { 
+        public static string GetConnectionString()
+        {
             if (rootConfig.ServerSettings != null)
             {
                 return rootConfig.ServerSettings.GetConnectionString();
             }
             return null;
         }
-        public static EmailSettings GetEmailSettings()
+
+
+        public static string GetTelegramToken()
         {
-            return rootConfig.EmailSettings;
+            return rootConfig.TgBotSettings.ToString();
         }
-       
+
+
     }
 }

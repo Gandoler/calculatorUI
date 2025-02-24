@@ -1,6 +1,6 @@
-﻿using OTSC_ui.Tools.AppSettingJsonPhars.Temaplates;
+﻿using OTSCSERVER.Tools.AppSettingsParse.Templaetes;
 
-namespace OTSC_ui.Tools.AppSettingJsonPhars.Reader
+namespace OTSCSERVER.Tools.AppSettingsParse.Reader
 {
     internal interface IJsonReaderForConfig
     {

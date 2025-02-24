@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace OTSC_ui.Tools.AppSettingJsonPhars.Temaplates
+namespace OTSCSERVER.Tools.AppSettingsParse.Templaetes
 {
     public class ServerSettings : ITemplates
     {
@@ -17,11 +17,11 @@ namespace OTSC_ui.Tools.AppSettingJsonPhars.Temaplates
                 string.IsNullOrWhiteSpace(User) ||
                 string.IsNullOrWhiteSpace(Password))
             {
-                Log.Information("ServerSettings: now in template:" + this.ToString());
+                Log.Information("ServerSettings: now in template:" + ToString());
                 Log.Error("ServerSettings:One or more required fields are missing for the connection string.");
-               
+
             }
-            
+
             return $"Server={Server};Port={Port};Database={Database};User Id={User};Password={Password};";
         }
         public override string ToString()

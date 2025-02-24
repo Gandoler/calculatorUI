@@ -64,6 +64,9 @@
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog, Version=4.2.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.4.2.0\lib\net471\Serilog.dll</HintPath>
     </Reference>
@@ -122,13 +125,12 @@
     <Compile Include="AppUI\MainPage\View\MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\AppSettingJsonPhars\ConnectionStringManager\ConnectionStringManager.cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Reader\IJsonReaderForConfig.cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Reader\JsonReaderForConfig.cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Temaplates\EmailSettings .cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Temaplates\Itemplates.cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Temaplates\RootConfig.cs" />
-    <Compile Include="Logic\AppSettingJsonPhars\Temaplates\ServerSettings.cs" />
+    <Compile Include="Logic\AppSettingsParse\ConectionStringManager\ConnectionStringManager.cs" />
+    <Compile Include="Logic\AppSettingsParse\Reader\IJsonReaderForConfig.cs" />
+    <Compile Include="Logic\AppSettingsParse\Reader\JsonReaderForConfig.cs" />
+    <Compile Include="Logic\AppSettingsParse\Templaetes\Itemplates.cs" />
+    <Compile Include="Logic\AppSettingsParse\Templaetes\RootConfig.cs" />
+    <Compile Include="Logic\AppSettingsParse\Templaetes\ServerSettings.cs" />
     <Compile Include="Logic\OldCode\Calc\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +160,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Logic\AppSettingsParse\RealSAppSettimgs.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

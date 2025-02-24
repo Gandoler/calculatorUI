@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
-using OTSC_ui.Tools.AppSettingJsonPhars.Temaplates;
+using OTSCSERVER.Tools.AppSettingsParse.Templaetes;
 using Serilog;
+using System;
 using System.IO;
 
 
-namespace OTSC_ui.Tools.AppSettingJsonPhars.Reader
+namespace OTSCSERVER.Tools.AppSettingsParse.Reader
 {
     internal class JsonReaderForConfig : IJsonReaderForConfig
     {
@@ -26,7 +27,7 @@ namespace OTSC_ui.Tools.AppSettingJsonPhars.Reader
                 {
                     Log.Error("Не удалось десериализовать JSON в объект.");
                 }
-               
+
                 else
                 {
                     Log.Error($"Объект успешно десериализован: {deserializedObject}");
