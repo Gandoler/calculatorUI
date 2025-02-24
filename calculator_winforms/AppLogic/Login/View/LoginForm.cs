@@ -1,21 +1,47 @@
-﻿using calculator_winforms.AppLogic.Login.View;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace calculator_winforms
+namespace calculator_winforms.AppLogic.Login.View
 {
-    public partial class LoginForm: Form, ILoginView
+    internal partial class LoginFrom : Form, ILoginView
     {
-        public LoginForm()
+        public LoginFrom()
         {
             InitializeComponent();
+            // Exit button
+            ExitButton.Click += (s, e) => ExitButtonClick?.Invoke();
+            ExitButton.MouseEnter += (s, e) => ExitButtonEntered?.Invoke();
+            ExitButton.MouseLeave += (s, e) => ExitButtonLeavd?.Invoke();
+           
+            // Login button
+            LoginButton.Click += (s, e) => LoginButtonClick?.Invoke(this, (LogintextBox.Text, PasswordTextBox.Text));
         }
+
+        // Exit button
+        public event Action ExitButtonClick;
+        public event Action ExitButtonEntered;
+        public event Action ExitButtonLeavd;
+
+       
+        // Login button
+        public event EventHandler<(string, string)>  LoginButtonClick;
+
+      
+
+       
+
+
+        public void MakeExitButtonForeBlack()
+        {
+            ExitButton.ForeColor = Color.Black;
+        }
+
+        public void MakeExitButtonForeRed()
+        {
+            ExitButton.ForeColor = Color.Red;
+        }
+
+     
     }
 }
