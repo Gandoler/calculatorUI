@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,12 @@ namespace calculator_winforms
         [STAThread]
         static void Main()
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File(@"C:\Users\glkru\OneDrive\Desktop\prj\Project_cpo\User_setup\Logs\myapp.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+
+            Log.Information("App start");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new calculator());
