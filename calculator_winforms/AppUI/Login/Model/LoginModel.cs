@@ -16,7 +16,7 @@ namespace calculator_winforms.AppLogic.Login.Model
       
 
 
-        public ModelLogin(ILoginManager loginManager)
+        public LoginModel(ILoginManager loginManager)
         {
             _loginManager = loginManager;
         }

@@ -80,18 +80,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppLogic\Login\Model\ILoginModel.cs" />
-    <Compile Include="AppLogic\Login\Model\LoginModel.cs" />
-    <Compile Include="AppLogic\Login\Presenter.cs" />
-    <Compile Include="AppLogic\Login\View\ILoginView.cs" />
-    <Compile Include="AppLogic\MainPage\Model\IMainPageModel.cs" />
-    <Compile Include="AppLogic\MainPage\Model\MainPageModel.cs" />
-    <Compile Include="AppLogic\MainPage\Presenter.cs" />
-    <Compile Include="AppLogic\MainPage\View\IMainPageView.cs" />
-    <Compile Include="AppLogic\MainPage\View\MainPage.cs">
+    <Compile Include="AppUI\Login\Model\ILoginModel.cs" />
+    <Compile Include="AppUI\Login\Model\LoginModel.cs" />
+    <Compile Include="AppUI\Login\Presenter.cs" />
+    <Compile Include="AppUI\Login\View\ILoginView.cs" />
+    <Compile Include="AppUI\MainPage\Model\IMainPageModel.cs" />
+    <Compile Include="AppUI\MainPage\Model\MainPageModel.cs" />
+    <Compile Include="AppUI\MainPage\Presenter.cs" />
+    <Compile Include="AppUI\MainPage\View\IMainPageView.cs" />
+    <Compile Include="AppUI\MainPage\View\MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppLogic\MainPage\View\MainPage.Designer.cs">
+    <Compile Include="AppUI\MainPage\View\MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Calc\Form1.cs">
@@ -100,15 +100,15 @@
     <Compile Include="Calc\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppLogic\Login\View\LoginForm.cs">
+    <Compile Include="AppUI\Login\View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppLogic\Login\View\LoginForm.Designer.cs">
+    <Compile Include="AppUI\Login\View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AppLogic\Login\View\LoginForm.resx">
+    <EmbeddedResource Include="AppUI\Login\View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calc\Form1.resx">

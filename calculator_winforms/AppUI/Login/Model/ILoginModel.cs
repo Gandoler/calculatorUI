@@ -8,5 +8,14 @@ namespace calculator_winforms.AppLogic.Login.Model
 {
     interface ILoginModel
     {
+
+
+        //login
+         event Action<bool> LoginGo;
+         event EventHandler<string> LoginFailed;
+
+
+         void LogInApl(string _login, string _password);
+       
     }
 }
